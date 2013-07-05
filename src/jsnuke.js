@@ -5,7 +5,7 @@
         init: function() {
 
             Console.init('#console');
-            Editor.init('#editor textarea');
+            Editor.init('#editor');
 
             document.querySelector('button').onclick = function() {
 

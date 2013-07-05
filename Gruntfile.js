@@ -2,6 +2,20 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        copy: {
+
+            dist: {
+
+                files: [
+
+                    {expand: true, src: ['components/CodeMirror/lib/codemirror.js', 'components/CodeMirror/mode/javascript/javascript.js'], dest: 'src/lib/' },
+                    {expand: true, src: ['components/CodeMirror/lib/codemirror.css'], dest: 'dist/' }
+
+                ]
+
+            }
+
+        },
         concat: {
               options: {
                 separator: ';'
@@ -39,10 +53,11 @@ module.exports = function(grunt) {
         },
         watch: {
           files: ['<%= concat.dist.src %>'],
-          tasks: ['qunit', 'concat', 'uglify', 'sass']
+          tasks: ['copy', 'qunit', 'concat', 'uglify', 'sass']
         }
       });
 
+      grunt.loadNpmTasks('grunt-contrib-copy');
       grunt.loadNpmTasks('grunt-contrib-uglify');
       grunt.loadNpmTasks('grunt-contrib-qunit');
       grunt.loadNpmTasks('grunt-contrib-sass');
@@ -51,7 +66,7 @@ module.exports = function(grunt) {
 
       grunt.registerTask('test', ['qunit']);
 
-      grunt.registerTask('default', ['qunit', 'concat', 'uglify', 'sass']);
+      grunt.registerTask('default', ['copy', 'qunit', 'concat', 'uglify', 'sass']);
 
 };
 
