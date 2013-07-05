@@ -1,0 +1,6 @@
+#console {
+  border: 1px solid #aeaeae; }
+  #console ul {
+    list-style-type: none; }
+    #console ul li {
+      border-bottom: 1px dashed #aeaeae; }

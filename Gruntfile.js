@@ -8,8 +8,13 @@ module.exports = function(grunt) {
 
                 files: [
 
+                    /* CodeMirror */
                     {expand: true, src: ['components/CodeMirror/lib/codemirror.js', 'components/CodeMirror/mode/javascript/javascript.js'], dest: 'src/lib/' },
-                    {expand: true, src: ['components/CodeMirror/lib/codemirror.css'], dest: 'dist/' }
+                    {expand: true, src: ['components/CodeMirror/lib/codemirror.css'], dest: 'dist/' },
+
+                    /* Bootstrap */
+                    {expand: true, src: ['components/jquery/jquery.js', 'components/bootstrap-javascript/bootstrap.js'], dest: 'src/lib/' },
+                    {expand: true, src: ['components/bower-bootstrap-css/bootstrap.min.css'], dest: 'dist/' }
 
                 ]
 
@@ -52,7 +57,7 @@ module.exports = function(grunt) {
 
         },
         watch: {
-          files: ['<%= concat.dist.src %>'],
+          files: ['<%= concat.dist.src %>', '<%= sass.dist.files =>'],
           tasks: ['copy', 'qunit', 'concat', 'uglify', 'sass']
         }
       });

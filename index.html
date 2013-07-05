@@ -6,22 +6,31 @@
 
   <link rel="stylesheet" href="dist/jsnuke.css">
   <link rel="stylesheet" href="dist/components/CodeMirror/lib/codemirror.css">
-
+  <link rel="stylesheet" href="dist/components/bower-bootstrap-css/bootstrap.min.css">
 </head>
 <body>
 
-  <button type="button">Run</button>
+  <div class="row-fluid">
 
-  <section id="editor">
-  <!--
-  <textarea></textarea>
-  -->
-  </section>
+    <div class="span6">
 
-  <section id="console">
-    <ul>
-    </ul>
-  </section>
+      <button type="button">Run</button>
+
+      <section id="editor">
+      <!--
+      <textarea></textarea>
+      -->
+      </section>
+
+    </div>
+    <div class="span6">
+
+      <section id="console">
+        <ul>
+        </ul>
+      </section>
+
+    </div>
 
   <script src="dist/jsnuke.min.js"></script>
   <script>
