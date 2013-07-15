@@ -11,7 +11,8 @@
 
           this.codeMirror = CodeMirror(this.node, {
 
-              mode: 'javascript'
+              mode: 'javascript',
+              lineNumbers: true
 
           });
 

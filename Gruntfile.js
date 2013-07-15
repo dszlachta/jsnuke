@@ -26,7 +26,7 @@ module.exports = function(grunt) {
                 separator: ';'
               },
               dist: {
-                src: ['src/**/*.js'],
+                src: ['src/*.js'],
                 dest: 'dist/<%= pkg.name %>.js'
               }
             },
@@ -49,7 +49,8 @@ module.exports = function(grunt) {
 
                 files: {
 
-                    'dist/<%= pkg.name %>.css': 'style/**/*.scss'
+                    //'dist/<%= pkg.name %>.css': 'style/**/*.scss'
+                    'dist/<%= pkg.name %>.css': 'style/main.scss'
 
                 }
 
@@ -57,8 +58,8 @@ module.exports = function(grunt) {
 
         },
         watch: {
-          files: ['<%= concat.dist.src %>', '<%= sass.dist.files =>'],
-          tasks: ['copy', 'qunit', 'concat', 'uglify', 'sass']
+          files: ['<%= concat.dist.src %>', 'style/**/*.scss'],
+          tasks: ['copy', 'qunit', 'concat', /*'uglify', */ 'sass']
         }
       });
 
@@ -71,7 +72,7 @@ module.exports = function(grunt) {
 
       grunt.registerTask('test', ['qunit']);
 
-      grunt.registerTask('default', ['copy', 'qunit', 'concat', 'uglify', 'sass']);
+      grunt.registerTask('default', ['copy', 'qunit', 'concat', /*'uglify', */ 'sass']);
 
 };
 

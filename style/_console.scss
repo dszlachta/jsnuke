@@ -1,6 +1,6 @@
 #console {
 
-    border: 1px solid #aeaeae;
+    height: 100%;
 
     ul {
 
@@ -8,7 +8,26 @@
 
         li {
 
-            border-bottom: 1px dashed #aeaeae;
+            border-bottom: 1px solid #aeaeae;
+            padding: 4px 2px;
+
+            span.number {
+
+              color: blue;
+
+            }
+
+            span.string {
+
+              color: red;
+
+            }
+
+            span.function {
+
+              color: purple;
+
+            }
 
         }
 

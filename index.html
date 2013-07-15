@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>jsNuke</title>
+  <head>
+    <meta charset="utf-8">
+    <title>jsNuke</title>
 
-  <link rel="stylesheet" href="dist/jsnuke.css">
-  <link rel="stylesheet" href="dist/components/CodeMirror/lib/codemirror.css">
-  <link rel="stylesheet" href="dist/components/bower-bootstrap-css/bootstrap.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="dist/jsnuke.css">
+    <link rel="stylesheet" href="dist/components/CodeMirror/lib/codemirror.css">
+    <link rel="stylesheet" href="dist/components/bower-bootstrap-css/bootstrap.min.css">
+  </head>
+  <body>
 
-  <div class="row-fluid">
+    <div class="content-fluid">
 
-    <div class="span6">
+      <div class="row-fluid">
 
-      <button type="button">Run</button>
+        <div class="panels">
 
-      <section id="editor">
-      <!--
-      <textarea></textarea>
-      -->
-      </section>
+        <div class="brand span1">
+          <span>jsNuke</span>
+          <button type="button">Run</button>
+        </div>
 
-    </div>
-    <div class="span6">
+          <div class="panel span6">
 
-      <section id="console">
-        <ul>
-        </ul>
-      </section>
 
-    </div>
+            <section id="editor">
+            <!--
+            <textarea></textarea>
+            -->
+            </section>
 
-  <script src="dist/jsnuke.min.js"></script>
-  <script>
-    jsNuke.init();
-  </script>
+          </div>
+          <div class="panel span5">
 
-</body>
-</html> 
+            <section id="console">
+            </section>
+
+          </div>
+
+        </div>
+
+        <!--
+        <script src="dist/jsnuke.min.js"></script>
+        -->
+
+        <script src="components/underscore/underscore.js"></script>
+        <script src="components/jquery/jquery.js"></script>
+        <script src="components/CodeMirror/lib/codemirror.js"></script>
+        <script src="components/CodeMirror/mode/javascript/javascript.js"></script>
+        <script src="components/bootstrap-javascript/bootstrap.js"></script>
+        <script src="dist/jsnuke.js"></script>
+        <script>
+          jsNuke.init();
+        </script>
+
+      </body>
+    </html> 

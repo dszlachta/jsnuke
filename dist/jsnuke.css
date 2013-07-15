@@ -1,6 +1,39 @@
+#editor .CodeMirror {
+  position: absolute;
+  height: 100%;
+  width: 100%; }
+
 #console {
-  border: 1px solid #aeaeae; }
+  height: 100%; }
   #console ul {
     list-style-type: none; }
     #console ul li {
-      border-bottom: 1px dashed #aeaeae; }
+      border-bottom: 1px solid #aeaeae;
+      padding: 4px 2px; }
+      #console ul li span.number {
+        color: blue; }
+      #console ul li span.string {
+        color: red; }
+      #console ul li span.function {
+        color: purple; }
+
+html {
+  height: 100%; }
+
+.brand {
+  height: 100%;
+  background-color: slategrey;
+  color: white;
+  text-shadow: 1px 1px 1px black; }
+  .brand span {
+    font-weight: bold; }
+
+.panels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+  .panels div.panel {
+    position: relative;
+    height: 100%; }

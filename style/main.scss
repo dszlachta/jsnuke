@@ -1,4 +1,49 @@
+
+@import "editor";
+@import "console";
+
+html {
+
+  height: 100%;
+
+}
+
 body {
 
+
+}
+
+.brand {
+
+    height: 100%;
+
+    background-color: slategrey;
+
+    color: white;
+    text-shadow: 1px 1px 1px black;
+
+    span {
+
+        font-weight: bold;
+
+    }
+
+}
+
+.panels {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    div.panel {
+
+      position: relative;
+
+       height: 100%;
+
+    }
 
 }
