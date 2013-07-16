@@ -1,6 +1,7 @@
 #console {
 
     height: 100%;
+    overflow-y: auto;
 
     ul {
 
@@ -8,8 +9,21 @@
 
         li {
 
-            border-bottom: 1px solid #aeaeae;
             padding: 4px 2px;
+            background-color: #eee;
+
+            &:first-child {
+
+              border-bottom: 1px solid #aeaeae;
+              background-color: white;
+
+              &:before {
+
+                content: '> ';
+
+              }
+
+            }
 
             span.number {
 

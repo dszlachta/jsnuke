@@ -7,11 +7,13 @@
             Console.init('#console');
             Editor.init('#editor');
 
-            document.querySelector('button').onclick = function() {
+            var execFn = function() {
 
                 jsNuke.execute(Editor.getCode());
 
             };
+
+            document.querySelector('button').onclick = execFn;
 
         },
 
