@@ -31,15 +31,15 @@
 
         expand.toggle();
 
-        equal(expandContent.css('display'), 'none', 'Toggle hides');
+        notEqual(expandContent.css('display'), 'none', 'Toggle shows');
 
         expand.toggle();
 
-        notEqual(expandContent.css('display'), 'none', 'Toggle shows');
+        equal(expandContent.css('display'), 'none', 'Toggle hides');
 
         expandNode.find('button').click();
 
-        equal(expandContent.css('display'), 'none', 'Toggle trigger works');
+        notEqual(expandContent.css('display'), 'none', 'Toggle trigger works');
 
     });
 

@@ -1,83 +1,5 @@
 (function(){
 
-    window.Widget = window.Widget || {};
-
-    window.Widget.Expand = function(parent, label, content) {
-
-        var self = this;
-
-        this.node = $('<div class="widget expand">')[0];
-        this.contentNode = $('<ul class="content">')[0];
-
-        this.expandTrigger = $('<button type="button">+</button>').on('click', function() {
-
-            self.onExpand(self);
-            self.toggle();
-
-        });
-
-        $(this.node).append(this.expandTrigger).append(label);
-
-        this.populate(content);
-        
-        $(this.node).append(this.contentNode).appendTo(parent);
-        
-    };
-
-    var P = window.Widget.Expand.prototype;
-    P.onExpand = function(context) {};
-
-    P.add = function(content) {
-
-        var i = $('<li>');
-
-        i.clone().append(content).appendTo(this.contentNode);
-
-    };
-
-    P.populate = function(content) {
-
-        var self = this;
-
-        if (_.isArray(content)) {
-
-            content.forEach(function(value){
-
-                self.add(value);
-
-            });
-
-        }
-        else
-            this.add(content);
-
-
-    };
-
-    P.show = function() {
-
-        $(this.contentNode).show();
-        return this.hide;
-
-    };
-
-    P.hide = function() {
-
-        $(this.contentNode).hide();
-        return this.show;
-
-    };
-
-    P.toggleProxy = P.hide;
-
-    P.toggle = function() {
-
-        this.toggleProxy = this.toggleProxy();
-
-    };
-
-    /* Console */
-
     var self = window.Console = {
 
         node: null,
@@ -99,13 +21,8 @@
 
            object: function(obj) {
 
-               var name = (obj.toString()).match(/\[object (\w*)\]/)[1];
+              var name = (obj.toString()).match(/\[object (\w*)\]/)[1];
                
-              _.each(obj, function(value, key){
-
-
-              });
-
               return '<span class="object">' + name + '</span>';
 
            },
@@ -145,19 +62,26 @@
 
         },
 
+
         insert: function(content) {
 
             var item = this.itemTemplate.cloneNode();
 
-            item.innerHTML = content;
+            if (typeof content == 'string') 
+                item.innerHTML = content;
+            else
+                item.appendChild(content);
 
             $(this.list).prepend(item);
 
         },
 
-        log: function(string) {
+        log: function(something) {
 
-            this.insert(this.prettyPrint.check(string));
+            if (_.isObject(something))
+                this.insert(new Widget.Inspector(something, undefined).node);
+            else
+                this.insert(this.prettyPrint.check(something));
 
         },
 
