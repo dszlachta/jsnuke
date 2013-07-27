@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jsNuke</title>
+
+    <link rel="stylesheet" href="dist/jsnuke.css">
+    <link rel="stylesheet" href="dist/components/CodeMirror/lib/codemirror.css">
+  </head>
+  <body>
+
+    <header class="toolbar">
+      jsNuke
+      <button type="button">Run</button>
+    </header>
+
+    <div id="panel-wrapper">
+
+      <section class="panel editing">
+
+          <div class="tabs">
+
+            <ul>
+
+              <li>
+                <button class="active">Code</button>
+              </li>
+
+              <li>
+                <button>Test</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div id="editor">
+          </div>
+
+      </section>
+
+      <section class="panel output">
+
+          <div class="tabs">
+
+            <ul>
+
+              <li>
+                <button class="active">Console</button>
+              </li>
+
+              <li>
+                <button>Object Inspector</button>
+              </li>
+
+              <li>
+                <button>DOM Inspector</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div id="console">
+          </div>
+
+      </section>
+
+    </div> <!-- #content -->
+
+        <!--
+        <script src="dist/jsnuke.min.js"></script>
+        -->
+
+        <script src="components/underscore/underscore.js"></script>
+        <script src="components/jquery/jquery.js"></script>
+        <script src="components/CodeMirror/lib/codemirror.js"></script>
+        <script src="components/CodeMirror/mode/javascript/javascript.js"></script>
+        <script src="dist/jsnuke.js"></script>
+        <script>
+          jsNuke.init();
+        </script>
+
+      </body>
+    </html> 

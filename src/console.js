@@ -67,10 +67,10 @@
 
             var item = this.itemTemplate.cloneNode();
 
-            if (typeof content == 'string') 
-                item.innerHTML = content;
-            else
+            if (content && content.nodeName) 
                 item.appendChild(content);
+            else
+                item.innerHTML = content;
 
             $(this.list).prepend(item);
 
@@ -79,25 +79,21 @@
         log: function(something) {
 
             if (_.isObject(something))
-                this.insert(new Widget.Inspector(something, undefined).node);
+                this.dir(something);
             else
                 this.insert(this.prettyPrint.check(something));
+
+        },
+
+        dir: function(object) {
+
+            this.insert(new Widget.Inspector(object, undefined).node);
 
         },
 
         error: function(string) {
 
             this.log('Error: ' + string);
-
-        },
-
-        dir: function(obj) {
-
-            _.each(obj, function(value, key) {
-
-                
-
-            });
 
         },
 

@@ -67,10 +67,10 @@
 
             var item = this.itemTemplate.cloneNode();
 
-            if (typeof content == 'string') 
-                item.innerHTML = content;
-            else
+            if (content && content.nodeName) 
                 item.appendChild(content);
+            else
+                item.innerHTML = content;
 
             $(this.list).prepend(item);
 
@@ -79,25 +79,21 @@
         log: function(something) {
 
             if (_.isObject(something))
-                this.insert(new Widget.Inspector(something, undefined).node);
+                this.dir(something);
             else
                 this.insert(this.prettyPrint.check(something));
+
+        },
+
+        dir: function(object) {
+
+            this.insert(new Widget.Inspector(object, undefined).node);
 
         },
 
         error: function(string) {
 
             this.log('Error: ' + string);
-
-        },
-
-        dir: function(obj) {
-
-            _.each(obj, function(value, key) {
-
-                
-
-            });
 
         },
 
@@ -169,7 +165,7 @@
         this.node = $('<div class="widget expand">')[0];
         this.contentNode = $('<ul class="content">')[0];
 
-        this.expandTrigger = $('<button type="button">+</button>').on('click', function() {
+        this.expandTrigger = $('<button type="button" class="trigger">+</button>').on('click', function() {
 
             self.onExpand.call(self);
             self.toggle();
@@ -228,6 +224,15 @@
 
     };
 
+    P.clear = function() {
+
+        var n;
+
+        while ( (n = this.contentNode.firstChild) )
+            n.parentNode.removeChild(n);
+
+    };
+
     P.show = function() {
 
         $(this.contentNode).show();
@@ -273,9 +278,10 @@
 
     var P = window.Widget.Inspector.prototype;
 
-    P.inspect = function() {
+    P.inspect = function(object) {
 
-        return _.pairs(this.object);
+        object = object || this.object;
+        return _.pairs(object);
 
     },
 
@@ -294,16 +300,16 @@
     };
     */
 
-    P.makeExpand = function(name, value, dataPart) {
+    P.makeExpand = function(name, value) {
 
         var self = this,
-            label = ['<span>', name, ': ', value, '</span>'].join(''),
+            label = ['<span><var>', name, '</var> ', value, '</span>'].join(''),
             e = new Widget.Expand(null, $(label)[0], null);
 
         e.onExpand = function(){
 
-            self.build(dataPart, this);
-            alert('expand!');
+            this.clear();
+            self.build(self.inspect(value), this);
 
         };
 
@@ -321,7 +327,7 @@
         data.forEach(function(member){
 
             if (_.isObject(member[1])) 
-                items.push(self.makeExpand(member[0], member[1], member).node);
+                items.push(self.makeExpand(member[0], member[1]).node);
             else
                 items.push(member[0] + ': ' + member[1]);
 

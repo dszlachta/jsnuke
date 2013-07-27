@@ -9,7 +9,7 @@
         this.node = $('<div class="widget expand">')[0];
         this.contentNode = $('<ul class="content">')[0];
 
-        this.expandTrigger = $('<button type="button">+</button>').on('click', function() {
+        this.expandTrigger = $('<button type="button" class="trigger">+</button>').on('click', function() {
 
             self.onExpand.call(self);
             self.toggle();
@@ -65,6 +65,15 @@
         else
             this.add(content);
 
+
+    };
+
+    P.clear = function() {
+
+        var n;
+
+        while ( (n = this.contentNode.firstChild) )
+            n.parentNode.removeChild(n);
 
     };
 

@@ -1,6 +1,7 @@
 
 @import "editor";
 @import "console";
+@import "expand";
 
 html {
 
@@ -10,9 +11,11 @@ html {
 
 body {
 
+  margin: 0;
 
 }
 
+/*
 .brand {
 
     height: 100%;
@@ -47,3 +50,130 @@ body {
     }
 
 }
+*/
+
+$header-bg: #333;
+$header-color: #ccc;
+$header-h: 25px;
+$header-vert-padding: 5px;
+
+$active-color: #030038;
+
+@mixin ui-border {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #ccc;
+}
+
+/* reset margins, etc */
+
+header h1,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  height: $header-h;
+
+  background-color: $header-bg;
+  color: $header-color;
+
+  padding: $header-vert-padding;
+
+  h1 {
+
+    font-size: 12pt;
+    display: inline-block;
+
+  }
+
+  button {
+    height: 100%;
+  }
+
+}
+
+#panel-wrapper {
+
+  position: fixed;
+  top: ($header-h + 2*$header-vert-padding);
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: auto;
+  
+}
+
+.panel {
+
+  position: absolute;
+  height: auto;
+
+  .tabs {
+
+    padding: 5px;
+    text-align: center;
+
+    @include ui-border;
+
+    ul li button {
+
+      border-width: 0 0 2px 0;
+      border-style: none;
+      border-color: none;
+
+      background-color: white;
+      color: $active-color;
+
+      font-weight: bold;
+
+      &.active {
+        border-bottom-color: $active-color;
+        border-bottom-style: solid;
+      }
+
+    }
+
+  }
+
+
+}
+
+.editing {
+  right: 50%;
+  left: 0;
+
+  border-right: 1px solid #ccc;
+}
+
+.output {
+  left: 50%;
+  right: 0;
+}
+
+.editing, .output {
+  top: 0;
+  bottom: 0;
+}
+
+ul.inline, .tabs ul {
+
+  display: inline-block;
+
+  list-style-type: none;
+
+  li {
+
+    display: inline;
+
+  }
+
+}
+

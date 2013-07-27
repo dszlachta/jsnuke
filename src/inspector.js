@@ -20,9 +20,10 @@
 
     var P = window.Widget.Inspector.prototype;
 
-    P.inspect = function() {
+    P.inspect = function(object) {
 
-        return _.pairs(this.object);
+        object = object || this.object;
+        return _.pairs(object);
 
     },
 
@@ -41,16 +42,16 @@
     };
     */
 
-    P.makeExpand = function(name, value, dataPart) {
+    P.makeExpand = function(name, value) {
 
         var self = this,
-            label = ['<span>', name, ': ', value, '</span>'].join(''),
+            label = ['<span><var>', name, '</var> ', value, '</span>'].join(''),
             e = new Widget.Expand(null, $(label)[0], null);
 
         e.onExpand = function(){
 
-            self.build(dataPart, this);
-            alert('expand!');
+            this.clear();
+            self.build(self.inspect(value), this);
 
         };
 
@@ -68,7 +69,7 @@
         data.forEach(function(member){
 
             if (_.isObject(member[1])) 
-                items.push(self.makeExpand(member[0], member[1], member).node);
+                items.push(self.makeExpand(member[0], member[1]).node);
             else
                 items.push(member[0] + ': ' + member[1]);
 
