@@ -1,0 +1,33 @@
+.expand {
+
+    button.trigger {
+
+        border: none;
+        font-weight: bold;
+        color: darkgreen;
+
+    }
+
+    ul.content {
+
+        li {
+
+            border-bottom: none !important;
+
+        }
+
+        li:nth-child(n) {
+
+            background-color: white;
+
+        }
+
+        li:nth-child(n+1) {
+
+            background-color: #efefef;
+
+        }
+
+    }
+
+}

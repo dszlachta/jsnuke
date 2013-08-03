@@ -54,8 +54,8 @@ body {
 
 $header-bg: #333;
 $header-color: #ccc;
-$header-h: 25px;
-$header-vert-padding: 5px;
+$header-h: 40px;
+$header-vert-padding: 0px;
 
 $active-color: #030038;
 
@@ -93,8 +93,50 @@ header {
 
   }
 
+  ul {
+    display: inline-block;
+    list-style-type: none;
+
+    li {
+
+      display: inline;
+
+    }
+
+  }
+
+  button, button:hover {
+
+    transition: background-color 1s;
+
+  }
+
   button {
-    height: 100%;
+
+    height: $header-h;
+    min-width: ($header-h + 0.4*$header-h);
+
+    background-color: inherit;
+    color: white;
+
+    font-weight: bold;
+    font-size: 11pt;
+
+    border: none;
+
+    &:hover {
+      background-color: darken($header-bg, 2%);
+    }
+
+    &:active {
+
+      transition: none;
+      background-color: darken($header-bg, 4%);
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, .9) inset,
+                  -1px -1px 3px rgba(0, 0, 0, .9) inset;
+
+    }
+
   }
 
 }
@@ -129,7 +171,7 @@ header {
       border-style: none;
       border-color: none;
 
-      background-color: white;
+      background-color: inherit;
       color: $active-color;
 
       font-weight: bold;
