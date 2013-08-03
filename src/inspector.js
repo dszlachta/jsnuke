@@ -75,7 +75,7 @@
 
         }, Widget.Inspector);
 
-        targetExpand = targetExpand || (this.mainExpand = new Widget.Expand(this.node, $(Console.prettyPrint.object(this.object), items)));
+        targetExpand = targetExpand || (this.mainExpand = new Widget.Expand(this.node, $(nuke.console.prettyPrint.object(this.object), items)));
         targetExpand.populate(items);
 
     };

@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+    var name = '<%= pkg.name %>-<%= pkg.version%>';
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         copy: {
@@ -26,7 +28,7 @@ module.exports = function(grunt) {
                 separator: ';'
               },
               dist: {
-                src: ['src/*.js'],
+                src: ['src/jsnuke.js', 'src/editor.js', 'src/expand.js', 'src/inspector.js', 'src/console.js'],
                 dest: 'dist/<%= pkg.name %>.js'
               }
             },
@@ -70,9 +72,9 @@ module.exports = function(grunt) {
       grunt.loadNpmTasks('grunt-contrib-watch');
       grunt.loadNpmTasks('grunt-contrib-concat');
 
-      grunt.registerTask('test', ['qunit']);
+      grunt.registerTask('test', ['concat', 'qunit']);
 
-      grunt.registerTask('default', ['copy', 'qunit', 'concat', /*'uglify', */ 'sass']);
+      grunt.registerTask('default', ['copy', 'concat', 'qunit', /*'uglify', */ 'sass']);
 
 };
 

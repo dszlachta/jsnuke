@@ -2,9 +2,15 @@
 
     test('components', function(){
 
-        ['Console', 'Editor', 'jsNuke'].forEach(function(component) {
+        ['nuke', 'Widget'].forEach(function(ns) {
 
-            equal(typeof window[component], 'object', component + ' present');
+            equal(typeof window[ns], 'object', ns + ' present');
+
+        });
+
+        ['console', 'editor'].forEach(function(component) {
+
+            equal(typeof window.nuke[component], 'object', component + ' present');
 
         })
 

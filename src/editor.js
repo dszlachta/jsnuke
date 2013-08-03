@@ -1,6 +1,6 @@
 (function(){
 
-    var self = window.Editor = {
+    var self = window.nuke.editor = {
 
       node: null,
       codeMirror: null,

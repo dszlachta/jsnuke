@@ -4,7 +4,7 @@
 
         var code = '(function(){ return true; })();';
 
-        ok(jsNuke.run(code), 'run()');
+        ok(nuke.run(code), 'run()');
 
     });
 

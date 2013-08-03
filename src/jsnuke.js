@@ -1,15 +1,15 @@
 (function(){
 
-    var self = window.jsNuke = {
+    var self = window.nuke = {
 
         init: function() {
 
-            Console.init('#console');
-            Editor.init('#editor');
+            nuke.console.init('#console');
+            nuke.editor.init('#editor');
 
             var execFn = function() {
 
-                jsNuke.execute(Editor.getCode());
+                nuke.execute(nuke.editor.getCode());
 
             };
 
@@ -27,12 +27,12 @@
 
             try {
 
-                Console.log(this.run(code));
+                nuke.console.log(this.run(code));
 
             } 
             catch (e) {
 
-                Console.error(e);
+                nuke.console.error(e);
 
             }
 

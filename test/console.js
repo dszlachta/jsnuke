@@ -4,20 +4,20 @@
 
         var selector = '#console';
 
-        Console.init(selector); 
-        ok(Console.node.isSameNode(document.querySelector(selector)), 'Selector matches');
+        nuke.console.init(selector); 
+        ok(nuke.console.node.isSameNode(document.querySelector(selector)), 'Selector matches');
 
         /* check pretty printing */
-        Console.log(1);
-        var logRes = ($(Console.node).find('span.number'))[0];
+        nuke.console.log(1);
+        var logRes = ($(nuke.console.node).find('span.number'))[0];
         ok(logRes, 'prettyPrint: number');
         equal(logRes.innerHTML, '1', 'logged out correct thing')
 
         /* check widget.expand */
         var content = $('<span id="test-expand">Test</span>'),
-        expand = new Widget.Expand(Console.node, 'label', content);
+        expand = new Widget.Expand(nuke.console.node, 'label', content);
 
-        var expandNode = $(Console.node).find('div.expand');
+        var expandNode = $(nuke.console.node).find('div.expand');
         ok(expandNode[0], 'Expand widget constructor');
 
         var expandContent = $(expandNode).find('ul.content');

@@ -1,6 +1,6 @@
 (function(){
 
-    var self = window.Console = {
+    var self = window.nuke.console = {
 
         node: null,
         list: null,
