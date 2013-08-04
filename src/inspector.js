@@ -42,11 +42,17 @@
     };
     */
 
+    P.format = function(name, value) {
+
+        return ['<span><var>', name, '</var> ', value, '</span>'].join('');
+
+    },
+
     P.makeExpand = function(name, value) {
 
         var self = this,
-            label = ['<span><var>', name, '</var> ', value, '</span>'].join(''),
-            e = new Widget.Expand(null, $(label)[0], null);
+            label = $(this.format(name, value))[0],
+            e = new Widget.Expand(null, label, null);
 
         e.onExpand = function(){
 
@@ -71,11 +77,11 @@
             if (_.isObject(member[1])) 
                 items.push(self.makeExpand(member[0], member[1]).node);
             else
-                items.push(member[0] + ': ' + member[1]);
+                items.push(self.format(member[0], member[1]));
 
         }, Widget.Inspector);
 
-        targetExpand = targetExpand || (this.mainExpand = new Widget.Expand(this.node, $(nuke.console.prettyPrint.object(this.object), items)));
+        targetExpand = targetExpand || (this.mainExpand = new Widget.Expand(this.node, $(nuke.console.prettyPrint.check(this.object), items)));
         targetExpand.populate(items);
 
     };

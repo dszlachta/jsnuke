@@ -2,6 +2,8 @@
 
     var self = window.nuke = {
 
+        exec_time: null,
+
         init: function() {
 
             nuke.console.init('#console');
@@ -19,7 +21,19 @@
 
         run: function(code) {
 
-            return eval(code);
+            var return_value,
+                start,
+                stop;
+
+            start = new Date();
+
+            var return_value = eval(code);
+
+            stop = new Date();
+
+            nuke.exec_time = stop-start;
+
+            return return_value;
 
         },
 
@@ -33,6 +47,27 @@
             catch (e) {
 
                 nuke.console.error(e);
+
+            }
+
+            this.exec_time = 0;
+
+        },
+
+        extract: {
+
+            fn: function(string) {
+
+                var data = string.match(/(\w*)(\([\w, ]*\))/),
+                    fname = data[1] || 'function',
+                    args = data[2];
+
+                return {
+
+                    name: fname,
+                    args: args
+
+                };
 
             }
 

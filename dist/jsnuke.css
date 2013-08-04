@@ -28,6 +28,10 @@
         color: red; }
       #console ul li span.function {
         color: purple; }
+      #console ul li p.info {
+        text-align: right;
+        font-size: small;
+        color: #555; }
 
 .expand button.trigger {
   border: none;
