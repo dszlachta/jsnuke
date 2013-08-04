@@ -7,16 +7,19 @@
         var self = this;
 
         this.node = $('<div class="widget expand">')[0];
+        this.label_wrp = $('<div class="label">')[0];
         this.contentNode = $('<ul class="content">')[0];
 
         this.expandTrigger = $('<button type="button" class="trigger">+</button>').on('click', function() {
 
             self.onExpand.call(self);
             self.toggle();
+            $(self.node).toggleClass('expanded');
 
         });
 
-        $(this.node).append(this.expandTrigger).append(label);
+        $(this.label_wrp).append(this.expandTrigger).append(label);
+        $(this.node).append(this.label_wrp);
 
         if (content) 
             this.populate(content);
@@ -80,6 +83,7 @@
     P.show = function() {
 
         $(this.contentNode).show();
+        $(this.expandTrigger).text('-');
         return this.hide;
 
     };
@@ -87,6 +91,7 @@
     P.hide = function() {
 
         $(this.contentNode).hide();
+        $(this.expandTrigger).text('+');
         return this.show;
 
     };

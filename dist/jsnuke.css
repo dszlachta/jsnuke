@@ -4,6 +4,8 @@
   width: 100%; }
 
 #console {
+  font-family: 'courier', monospace;
+  font-size: 10pt;
   background-color: #f2f2f2;
   height: 100%;
   overflow-y: auto; }
@@ -36,13 +38,30 @@
 .expand button.trigger {
   border: none;
   font-weight: bold;
-  color: darkgreen; }
+  color: darkgreen;
+  background-color: inherit;
+  width: 20px;
+  height: 18px;
+  padding: 1px 2.5px; }
 .expand ul.content li {
   border-bottom: none !important; }
+.expand ul.content li:hover {
+  background-color: #e9e9e9 !important; }
 .expand ul.content li:nth-child(n) {
   background-color: white; }
 .expand ul.content li:nth-child(n+1) {
   background-color: #efefef; }
+
+.inspector {
+  /* do not apply margin to expands */ }
+  .inspector .member var {
+    width: 30%;
+    color: #881391;
+    display: inline-block;
+    /* because expands have an expand button */
+    margin-right: 22px; }
+  .inspector .label var {
+    margin-right: 0; }
 
 html {
   height: 100%; }

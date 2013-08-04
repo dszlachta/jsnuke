@@ -44,14 +44,16 @@
 
     P.format = function(name, value) {
 
-        return ['<span><var>', name, '</var> ', value, '</span>'].join('');
+        //return ['<div class="member"><var>', name, '</var><span>', value, '</span></div>'].join('');
+        //return ['<span class="member"><var>', name, '</var><span class="value">', value, '</span></span>'].join('');
+
+        return $('<span class="member"><var>' + name + '</var></span>');
 
     },
 
-    P.makeExpand = function(name, value) {
+    P.makeExpand = function(value, label) {
 
         var self = this,
-            label = $(this.format(name, value))[0],
             e = new Widget.Expand(null, label, null);
 
         e.onExpand = function(){
@@ -70,14 +72,20 @@
     P.build = function(data, targetExpand) {
 
         var self = this,
-            items = [];
+            items = [],
+            formatted,
+            value;
 
         data.forEach(function(member){
 
+            value = nuke.console.prettyPrint.check(member[1]);
+            formatted = self.format(member[0]);
+            $(formatted).append(value);
+
             if (_.isObject(member[1])) 
-                items.push(self.makeExpand(member[0], member[1]).node);
+                items.push(self.makeExpand(member[1], formatted).node);
             else
-                items.push(self.format(member[0], member[1]));
+                items.push(formatted);
 
         }, Widget.Inspector);
 
