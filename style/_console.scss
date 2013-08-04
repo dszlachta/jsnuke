@@ -41,6 +41,12 @@
 
               color: red;
 
+              &:before, &:after {
+
+                content: '"';
+
+              }
+
             }
 
             span.function {

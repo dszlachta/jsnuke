@@ -28,6 +28,8 @@
         color: blue; }
       #console ul li span.string {
         color: red; }
+        #console ul li span.string:before, #console ul li span.string:after {
+          content: '"'; }
       #console ul li span.function {
         color: purple; }
       #console ul li p.info {
